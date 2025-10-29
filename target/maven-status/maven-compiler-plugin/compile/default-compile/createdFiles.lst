@@ -1,0 +1,9 @@
+com\example\examtimetable\repository\UserRepository.class
+com\example\examtimetable\model\User.class
+com\example\examtimetable\service\UserService.class
+com\example\examtimetable\model\Exam.class
+com\example\examtimetable\controller\TimetableController.class
+com\example\examtimetable\controller\AuthController.class
+com\example\examtimetable\ExamTimetableApplication.class
+com\example\examtimetable\config\SecurityConfig.class
+com\example\examtimetable\repository\ExamRepository.class

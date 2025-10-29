@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Rooms</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body class="app">
+  <aside class="sidebar">
+    <div class="brand">ExamTimetable</div>
+    <nav>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/timetable/generate">Generate Timetable</a>
+      <a href="/reports">Reports</a>
+      <a class="active" href="/rooms">Rooms</a>
+      <a href="/invigilation">Invigilation</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <h2>Rooms</h2>
+      <div class="actions">
+        <form th:action="@{/logout}" method="post" style="display:inline;margin-left:8px">
+          <button type="submit" class="btn-ghost">Logout</button>
+        </form>
+      </div>
+    </header>
+    <section class="content">
+      <div class="card">
+        <div class="toolbar">
+          <button class="btn" type="button">Add Room</button>
+        </div>
+        <table class="table">
+          <thead><tr><th>Room</th><th>Capacity</th><th>Type</th><th>Actions</th></tr></thead>
+          <tbody>
+            <tr><td>Lab-101</td><td>30</td><td>Practical</td><td><a href="#">Edit</a> · <a href="#">Delete</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Dashboard - Exam Timetable</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body class="app">
+  <aside class="sidebar">
+    <div class="brand">ExamTimetable</div>
+    <nav>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/timetable/generate">Generate Timetable</a>
+      <a href="/reports">Reports</a>
+      <a href="/rooms">Rooms</a>
+      <a href="/invigilation">Invigilation</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <h2>Dashboard</h2>
+      <div class="actions">
+        <a class="btn-ghost" href="/reports">Export PDF</a>
+        <form th:action="@{/logout}" method="post" style="display:inline;margin-left:8px">
+          <button type="submit" class="btn-ghost">Logout</button>
+        </form>
+      </div>
+    </header>
+    <section class="content">
+      <div class="card">
+        <h3>Upcoming Exams</h3>
+        <table class="table">
+          <thead><tr><th>Course</th><th>Dept</th><th>Start</th><th>End</th><th>Room</th><th>Type</th></tr></thead>
+          <tbody>
+            <tr th:each="e : ${exams}">
+              <td th:text="${e.courseCode} + ' - ' + ${e.courseName}"></td>
+              <td th:text="${e.department}"></td>
+              <td th:text="${#temporals.format(e.startTime, 'dd-MMM-uuuu HH:mm')}"></td>
+              <td th:text="${#temporals.format(e.endTime, 'dd-MMM-uuuu HH:mm')}"></td>
+              <td th:text="${e.room}"></td>
+              <td th:text="${e.type}"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

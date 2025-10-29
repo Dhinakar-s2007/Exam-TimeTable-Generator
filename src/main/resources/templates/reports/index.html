@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Reports</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body class="app">
+  <aside class="sidebar">
+    <div class="brand">ExamTimetable</div>
+    <nav>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/timetable/generate">Generate Timetable</a>
+      <a class="active" href="/reports">Reports</a>
+      <a href="/rooms">Rooms</a>
+      <a href="/invigilation">Invigilation</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <h2>Reports</h2>
+      <div class="actions">
+        <a class="btn primary" href="#">Download All PDFs</a>
+        <form th:action="@{/logout}" method="post" style="display:inline;margin-left:8px">
+          <button type="submit" class="btn-ghost">Logout</button>
+        </form>
+      </div>
+    </header>
+
+    <section class="content">
+      <!-- KPI Summary -->
+      <div class="grid cols-3 section">
+        <div class="card">
+          <div class="card-header"><strong>Total Exams</strong><span class="badge">Live</span></div>
+          <div style="font-size:28px;font-weight:700">—</div>
+          <div class="muted">Across all departments</div>
+        </div>
+        <div class="card">
+          <div class="card-header"><strong>Rooms Utilized</strong><span class="badge">Today</span></div>
+          <div style="font-size:28px;font-weight:700">—</div>
+          <div class="muted">Morning & Afternoon</div>
+        </div>
+        <div class="card">
+          <div class="card-header"><strong>Invigilators Assigned</strong><span class="badge">This week</span></div>
+          <div style="font-size:28px;font-weight:700">—</div>
+          <div class="muted">Faculty distribution</div>
+        </div>
+      </div>
+
+      <!-- Timetable PDF -->
+      <div class="card section">
+        <div class="card-header">
+          <div>
+            <h3 style="margin:0">Timetable PDF</h3>
+            <div class="muted">Export the consolidated timetable filtered by department and date range</div>
+          </div>
+          <div class="toolbar">
+            <a class="btn" href="#">Preview</a>
+            <a class="btn primary" href="#">Export PDF</a>
+          </div>
+        </div>
+        <div class="grid cols-3">
+          <label>Department
+            <select>
+              <option>All</option>
+              <option>IT</option>
+              <option>CSE</option>
+              <option>ECE</option>
+            </select>
+          </label>
+          <label>From <input type="date"/></label>
+          <label>To <input type="date"/></label>
+        </div>
+      </div>
+
+      <!-- Invigilation Report -->
+      <div class="card section">
+        <div class="card-header">
+          <div>
+            <h3 style="margin:0">Invigilation Report</h3>
+            <div class="muted">Faculty-wise duty allocation with sessions and rooms</div>
+          </div>
+          <div class="toolbar">
+            <a class="btn" href="#">Preview</a>
+            <a class="btn primary" href="#">Download</a>
+          </div>
+        </div>
+        <table class="table">
+          <thead><tr><th>Faculty</th><th>Date</th><th>Session</th><th>Room</th></tr></thead>
+          <tbody>
+            <tr><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Room Usage Report -->
+      <div class="card section">
+        <div class="card-header">
+          <div>
+            <h3 style="margin:0">Room Usage</h3>
+            <div class="muted">Utilization by date/session to avoid clashes and underuse</div>
+          </div>
+          <div class="toolbar">
+            <a class="btn" href="#">Preview</a>
+            <a class="btn primary" href="#">Download</a>
+          </div>
+        </div>
+        <table class="table">
+          <thead><tr><th>Room</th><th>Date</th><th>Session</th><th>Course</th></tr></thead>
+          <tbody>
+            <tr><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Student Exam List -->
+      <div class="card section">
+        <div class="card-header">
+          <div>
+            <h3 style="margin:0">Student Exam List</h3>
+            <div class="muted">Personalized schedule export by registration number</div>
+          </div>
+          <div class="toolbar">
+            <a class="btn" href="#">Preview</a>
+            <a class="btn primary" href="#">Download</a>
+          </div>
+        </div>
+        <div class="grid cols-2">
+          <label>Register No.
+            <input type="text" placeholder="e.g., 22CSE001"/>
+          </label>
+          <div style="align-self:end"><a class="btn" href="#">Search</a></div>
+        </div>
+      </div>
+
+      <!-- Printable View -->
+      <div class="card section">
+        <div class="card-header">
+          <div>
+            <h3 style="margin:0">Printable Timetable</h3>
+            <div class="muted">Clean layout optimized for A4 landscape</div>
+          </div>
+          <div class="toolbar">
+            <a class="btn" href="#">Open Printable</a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+</body>
+</html>

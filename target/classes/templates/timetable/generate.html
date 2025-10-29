@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Generate Timetable</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body class="app">
+  <aside class="sidebar">
+    <div class="brand">ExamTimetable</div>
+    <nav>
+      <a href="/dashboard">Dashboard</a>
+      <a class="active" href="/timetable/generate">Generate Timetable</a>
+      <a href="/reports">Reports</a>
+      <a href="/rooms">Rooms</a>
+      <a href="/invigilation">Invigilation</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <h2>Generate Timetable</h2>
+      <div class="actions">
+        <form th:action="@{/logout}" method="post" style="display:inline;margin-left:8px">
+          <button type="submit" class="btn-ghost">Logout</button>
+        </form>
+      </div>
+    </header>
+    <section class="content">
+      <div th:if="${message}" class="alert success" th:text="${message}"></div>
+      <div class="card">
+        <form method="post" th:action="@{/timetable/generate}">
+          <div class="grid">
+            <label>Department
+              <select name="department">
+                <option value="ALL">All</option>
+                <option>IT</option>
+                <option>CSE</option>
+                <option>ECE</option>
+              </select>
+            </label>
+            <label>Exam Window Start
+              <input type="date" name="from" required />
+            </label>
+            <label>Exam Window End
+              <input type="date" name="to" required />
+            </label>
+            <label>Max Exams / Day
+              <input type="number" name="maxPerDay" value="2" min="1" max="5" />
+            </label>
+            <label>Include Weekends
+              <input type="checkbox" name="includeWeekends" />
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" type="submit">Run Scheduler</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
